@@ -21,6 +21,16 @@ class Tools
             echo 'Total time: ' . $totalTime . 's';
             die;
         }
+    }
 
+    /**
+     * Used for try/catch a warning
+     */
+    public static function warningToException(){
+        set_error_handler(function ($errNo, $errStr, $errFile, $errLine) {
+            if (0 === error_reporting())
+                return false;
+            throw new \ErrorException($errStr, 0, $errNo, $errFile, $errLine);
+        });
     }
 }
