@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<div>
+    <label>Extension</label>
+    <input type="text" name="extension" title="Extension">
+    <input id="folder" type="file" webkitdirectory directory multiple/>
+    <button type="button" onclick="showFolder()">Show</button>
+    <h1>File list</h1>
+    <ul id="view">
+    </ul>
+</div>
+<script type="text/javascript">
+    function showFolder() {
+        document.getElementById("view").innerHTML = ''; //Clear view
+        var extension = document.getElementsByName("extension")[0].value;
+        var folder = document.getElementById("folder");
+        var files = folder.files,
+            length = files.length;
+        console.log(folder);
+        console.log(folder.files);
+        for (var i = 0; i < length; i++) {
+            var ext = files[i].name.split(".").pop();
+            if (extension === '' || extension.indexOf(ext) !== -1)
+                addFileToDOM(files[i]);
+        }
+    }
+
+    function addFileToDOM(file) {
+        var item = document.createElement("li");
+        var content = document.createTextNode(file.name);
+        item.appendChild(content);
+        var view = document.getElementById("view");
+        view.appendChild(item);
+    }
+</script>
+</body>
+</html>
