@@ -1,5 +1,5 @@
 {
-    "name": "ridoz/php",
+    "name": "terpise/php",
     "description": "Library functions for php",
     "authors": [
         {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ridoz\\": "src/"
+            "Terpise\\": "src/"
         }
     }
 }
